@@ -25,7 +25,7 @@ const SignUp = () => {
   const emailCheck = async () => {
     if (checkEmail.length > 0 && checkEmail.includes('@')) {
       try {
-        const checkRes = await fetch('http://localhost:5000/api/register/useremail', {
+        const checkRes = await fetch(`${process.env.REACT_APP_API_URL}/api/register/useremail`, {
           method: 'POST',
           headers: { 'content-type': 'application/json; charset=UTF-8' },
           credentials: 'include',
@@ -53,7 +53,7 @@ const SignUp = () => {
 
   const emailCode = async () => {
     try {
-      const request = await fetch('http://localhost:5000/api/register/usercheckcode', {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/api/register/usercheckcode`, {
         method: 'POST',
         headers: { 'content-type': 'application/json; charset=UTF-8' },
         credentials: 'include',
@@ -75,7 +75,7 @@ const SignUp = () => {
 
   const confirmCodeChecking = async () => {
     try {
-      const request = await fetch('http://localhost:5000/api/register/userconfirmcode', {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/api/register/userconfirmcode`, {
         method: 'POST',
         headers: { 'content-type': 'application/json; charset=UTF-8' },
         credentials: 'include',
