@@ -1,0 +1,32 @@
+name: Deploy Client
+
+on:
+  push:
+    paths:
+      - 'client/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: SSH into EC2 and deploy client
+      run: |
+        echo "${{ secrets.AWS_EC2_KEY }}" > client_key.pem
+        chmod 400 client_key.pem
+        ssh -o StrictHostKeyChecking=no -i ./client_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.CLIENT_EC2_HOST }} "\
+          cd ~/aicc_project/client && \
+          git pull && \
+          docker stop client_container || true && \
+          docker rm client_container || true && \
+          docker build -t client_image . && \
+          docker run -d --name client_container -p 3000:3000 client_image"
