@@ -38,7 +38,8 @@ const Admin = ({ setIsAuthenticated, setUserInfo }) => {
   useEffect(() => {
     const fetchSessionStatuses = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/session-status`, { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/session-status`, 
+          { withCredentials: true });
         console.log('Session Statuses fetched:', response.data.sessionStatuses); // 세션 상태 확인
         setSessionStatuses(response.data.sessionStatuses); // 세션 상태 설정
       } catch (error) {
@@ -51,7 +52,8 @@ const Admin = ({ setIsAuthenticated, setUserInfo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/admin`, { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/admin`, 
+          { withCredentials: true });
         setUsers(response.data.data);
   
         const initialWarnings = response.data.data.reduce((acc, user) => {
@@ -79,7 +81,8 @@ const Admin = ({ setIsAuthenticated, setUserInfo }) => {
       const currentCount = warnings[id] || 0;
       if (currentCount < 4) {
         const newCount = currentCount + 1;
-        await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/warning`, { user_id: id, warningCount: newCount }, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/warning`, 
+          { user_id: id, warningCount: newCount }, {
           withCredentials: true 
         });
         setWarnings((prevWarnings) => ({
