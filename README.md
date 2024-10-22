@@ -1,15 +1,15 @@
 # Client 배포를 위한 Repository 입니다. 
 
-- react로 구성하였습니다. 
+- React로 구성하였습니다. 
 - PORT 3000으로 구성하였으며, Server 인스턴스와 통신합니다. 
 
-# client 관련 구조도
+# VPC Client 관련 구조도
 ![client](./readme_image/client.png)
 ![alt text](./readme_image/image.png)
 
 # AWS VPC Public Subnet
 - aicc-map-client로 생성했으며, 10.0.0.0/22로 구성했습니다. 
-- 사용 가능한 IP를 1019개 할당해주었습니다.
+- 사용 가능한 IP를 1,019개 할당해주었습니다.
 - 서비스 사용자가 접근하기 쉬워야 한다고 생각했기에, 인터넷과 직접 연결될 수 있는 서브넷으로 구성했습니다. 
 - 해당 Client 인스턴스는 Public으로 생성하며, Public IPv4 주소를 할당받도록 했습니다. 
 
