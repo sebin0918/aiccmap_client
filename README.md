@@ -3,7 +3,7 @@
 - React로 구성하였습니다. 
 - PORT 3000으로 구성하였으며, Server 인스턴스와 통신합니다. 
 
-# VPC Client 관련 구조도
+# VPC Client 구조도
 ![client](./readme_image/client.png)
 ![alt text](./readme_image/image.png)
 
